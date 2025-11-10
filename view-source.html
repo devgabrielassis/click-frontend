@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PÁGINA DE VENDAS - CLICK DIGITAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style> 
+    :root {
+      --primary: #23d6a5;
+      --secondary: #000000;
+      --light: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: radial-gradient(circle at top left, rgba(35, 214, 165, 0.12), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(35, 214, 165, 0.08), transparent 45%),
+        #050505;
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    .page-wrapper {
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      inset: auto;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      filter: blur(160px);
+      background: rgba(35, 214, 165, 0.28);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow.glow-top {
+      top: 0;
+      left: 5%;
+    }
+
+    .glow.glow-bottom {
+      bottom: 6%;
+      right: 2%;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 48px clamp(20px, 6vw, 48px);
+      border-radius: 28px;
+      margin-bottom: 80px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.72));
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    section:not(:first-of-type)::before {
+      content: "";
+      position: absolute;
+      top: -48px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(60%, 420px);
+      height: 2px;
+      background: linear-gradient(90deg, rgba(35, 214, 165, 0), rgba(35, 214, 165, 0.7), rgba(35, 214, 165, 0));
+      opacity: 0.85;
+    }
+
+    section.alt {
+      background: linear-gradient(135deg, rgba(35, 214, 165, 0.12), rgba(0, 0, 0, 0.86));
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 3.2vw, 3.8rem);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 2.5vw, 2.8rem);
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      margin-bottom: 16px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--light);
+    }
+
+    ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 12px rgba(35, 214, 165, 0.7);
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--secondary);
+      background: var(--primary);
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(35, 214, 165, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 20px 50px rgba(35, 214, 165, 0.5);
+    }
+
+    .cta.secondary {
+      background: transparent;
+      color: var(--light);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: none;
+    }
+
+    .hero {
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      align-items: center;
+      padding: 64px 48px;
+      background: linear-gradient(140deg, rgba(35, 214, 165, 0.18), rgba(0, 0, 0, 0.92));
+      position: relative;
+      overflow: visible;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+    }
+
+    #secao1 {
+      margin-bottom: 140px;
+    }
+
+    .top-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      margin: 0 auto 48px;
+      width: 100%;
+      background: linear-gradient(90deg, rgba(35, 214, 165, 0.18), rgba(35, 214, 165, 0.02));
+      color: var(--primary);
+      font-size: 0.96rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+      will-change: opacity, transform;
+    }
+
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.15s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.3s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.45s;
+    }
+
+    .hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(35, 214, 165, 0.55);
+      background: rgba(35, 214, 165, 0.14);
+      margin-bottom: 22px;
+      color: var(--primary);
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 24px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      position: absolute;
+      left: 50%;
+      transform: translateX(50%);
+      bottom: -32px;
+      justify-content: center;
+      width: 95%;
+      max-width: 840px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(35, 214, 165, 0.2);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-media {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(35, 214, 165, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: lighten;
+      opacity: 0.85;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    .section-header p {
+      font-size: 1.05rem;
+    }
+
+    .grid-two,
+    .grid-three {
+      display: grid;
+      gap: 28px;
+    }
+
+    .grid-two {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .grid-three {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid rgba(35, 214, 165, 0.25);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .pricing-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .pricing-card {
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(35, 214, 165, 0.08), rgba(0, 0, 0, 0.85));
+      text-align: center;
+    }
+
+    .pricing-card.highlight {
+      border: 1px solid rgba(35, 214, 165, 0.6);
+      box-shadow: 0 20px 45px rgba(35, 214, 165, 0.28);
+      transform: translateY(-6px);
+    }
+
+    .pricing-card h4 {
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .pricing-card strong {
+      display: block;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--light);
+    }
+
+    .pricing-card span {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .testimonial-gallery {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .testimonial-gallery.grid-cols-5 {
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+    }
+
+    @media (max-width: 1024px) {
+      .testimonial-gallery.grid-cols-5 {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+    }
+
+    .hover-zoom {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(35, 214, 165, 0.2);
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: zoom-in;
+    }
+
+    .hover-zoom img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.1);
+      transition: transform 0.4s ease;
+    }
+
+    .hover-zoom:hover,
+    .hover-zoom:focus {
+      transform: scale(1.06);
+      box-shadow: 0 20px 40px rgba(35, 214, 165, 0.24);
+    }
+
+    .hover-zoom.zoomed {
+      transform: scale(1.08);
+      box-shadow: 0 24px 50px rgba(35, 214, 165, 0.32);
+      z-index: 2;
+      cursor: zoom-out;
+    }
+
+    .hover-zoom:hover img,
+    .hover-zoom:focus img,
+    .hover-zoom.zoomed img {
+      transform: scale(1.05);
+    }
+
+    .hover-zoom::after {
+      content: "Clique para ampliar";
+      position: absolute;
+      inset: auto 12px 12px;
+      padding: 6px 12px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 999px;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hover-zoom:hover::after,
+    .hover-zoom:focus::after,
+    .hover-zoom.zoomed::after {
+      opacity: 1;
+    }
+
+    .turmas-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .turmas-gallery .card {
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid rgba(35, 214, 165, 0.25);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .turmas-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-gallery figcaption {
+      position: absolute;
+      inset: auto 0 0 0;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.88));
+      padding: 22px;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .bullets {
+      margin-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px 80px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: none;
+    }
+
+    @media (max-width: 840px) {
+      section,
+      .hero {
+        padding: 36px 28px;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        align-items: center;
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 40px;
+      }
+
+      #secao1 {
+        margin-bottom: 80px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        margin: 24px;
+      }
+
+      .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta {
+        width: 100%;
+      }
+
+      section,
+      .hero {
+        padding: 28px 22px;
+      }
+
+      .hero {
+        gap: 28px;
+      }
+
+      .hero-title {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 140px 18px 28px;
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(5, 5, 5, 0) 38%, rgba(5, 5, 5, 0.88) 94%),
+          url('/img/hero.jpg') center/cover no-repeat;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        color: var(--light);
+        text-align: center;
+        min-height: 520px;
+      }
+
+      .hero-title span {
+        display: inline-block;
+        line-height: 1.2;
+      }
+
+      .hero .fade-up.delay-1 p {
+        color: rgba(255, 255, 255, 0.82);
+        text-align: center;
+      }
+
+      .cta-group {
+        align-items: center;
+      }
+
+      .card,
+      .section-header,
+      ul,
+      .map-copy {
+        text-align: center;
+      }
+
+      ul li {
+        padding-left: 0;
+      }
+
+      ul li::before {
+        display: none;
+      }
+
+      .grid-two,
+      .grid-three,
+      .pricing-table,
+      .turmas-gallery,
+      .map-wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .testimonial-gallery.grid-cols-5 {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      .hero-media {
+        display: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      body {
+        line-height: 1.5;
+      }
+
+      #secao1 {
+        margin-bottom: 72px;
+      }
+
+      .hero-meta {
+        margin-top: 24px;
+      }
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      z-index: 999;
+      backdrop-filter: blur(12px);
+    }
+
+    .lightbox.open {
+      display: flex;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .lightbox img {
+      max-width: min(90vw, 820px);
+      max-height: 80vh;
+      border-radius: 22px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(35, 214, 165, 0.4);
+    }
+
+    .lightbox button {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      transition: background 0.3s ease;
+    }
+
+    .lightbox button:hover {
+      background: rgba(35, 214, 165, 0.22);
+      color: var(--light);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(35, 214, 165, 0.25);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 32px 0;
+      margin-top: 20px;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+
+    .carousel::before,
+    .carousel::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 18%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .carousel::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(5, 5, 5, 0.92), transparent);
+    }
+
+    .carousel::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(5, 5, 5, 0.92), transparent);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      min-width: max-content;
+      animation: scrollX 20s linear infinite;
+    }
+
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    .carousel-item {
+      flex: 0 0 240px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(35, 214, 165, 0.28);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05);
+    }
+
+    .map-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .map-copy h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: var(--primary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .map-copy p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      border-radius: 22px;
+      box-shadow: 0 30px 60px rgba(35, 214, 165, 0.18);
+      filter: saturate(1.05);
+    }
+
+    @keyframes scrollX {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        margin: 24px;
+      }
+      }
+
+    @media (max-width: 640px) {
+      .carousel {
+        padding: 24px 0;
+      }
+
+      .carousel-item {
+        flex: 0 0 180px;
+      }
+
+      .map-frame iframe {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <span class="glow glow-top"></span>
+    <span class="glow glow-bottom"></span>
+
+    <div class="top-banner fade-up">Curso 100% presencial • Click Digital</div>
+
+    <section class="hero fade-up" id="secao1">
+      <div class="fade-up delay-1">
+        <h1 class="hero-title"><span>Domine o tráfego pago com quem mais entende do assunto em Belém.</span></h1>
+        <p>A maior assessoria de tráfego pago da cidade te ensina, na prática, a criar campanhas que vendem e a entender o que realmente gera resultado. Um dia imersivo, feito para quem quer aplicar de verdade.</p>
+        <p>Curso 100% presencial, voltado para quem quer executar, testar e otimizar — não apenas decorar.</p>
+        <div class="cta-group fade-up delay-2">
+          <a class="cta" href="#secao7">Quero garantir minha vaga agora</a>
+          <a class="cta secondary" href="#secao6">Ver feedbacks de alunos</a>
+        </div>
+      </div>
+      <div class="hero-media fade-up delay-2">
+        <img src="/img/hero.jpg" alt="Participantes do curso Click Digital" loading="lazy" />
+      </div>
+    </section>
+<!--     <div class="hero-meta fade-up delay-3">
+      <span>Parque Office • Augusto Montenegro • 13 de novembro</span>
+      <span>+ dezenas de alunos formados em Belém</span>
+      <span>Certificado e coffee break inclusos</span>
+    </div> -->   
+
+    <section id="secao2" class="alt fade-up">
+      <div class="section-header">
+        <h2>Por que essa imersão é diferente</h2>
+        <p>Aprenda com quem vive de tráfego todos os dias. Uma experiência totalmente prática, para você aprender de verdade e aplicar o conhecimento de imediato.</p>
+      </div>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Hands-on sem enrolação</h3>
+          <p>Durante o curso, você constrói campanhas reais, aprende a usar inteligência artificial para gerar criativos que convertem e sai sabendo como aumentar suas vendas de forma consistente.</p>
+        </div>
+        <div class="card">
+          <h3>Estratégia + Execução</h3>
+          <p>Você entende os bastidores das contas gerenciadas pela Click Digital e descobre quais decisões aceleram resultados. Tudo acompanhado de perto, direto com quem faz isso diariamente.</p>
+          <div class="cta-group">
+            <a class="cta" href="#secao7">Fazer parte da próxima turma</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="secao3" class="fade-up">
+      <div class="section-header">
+        <h2>O que você vai aprender e colocar em prática</h2>
+        <p>Um roadmap completo para planejar, executar e escalar campanhas de tráfego pago com consistência.</p>
+      </div>
+      <ul>
+        <li>Como montar campanhas que realmente convertem.</li>
+        <li>Como usar IA para gerar criativos e automação inteligente.</li>
+        <li>Como interpretar dados e métricas com clareza.</li>
+        <li>Como escalar resultados de forma estratégica.</li>
+        <li>Como criar e otimizar campanhas que vendem todos os dias.</li>
+      </ul>
+      <p>Tudo acompanhado de perto, direto com quem faz isso diariamente.</p>
+      <div class="cta-group">
+        <a class="cta" href="#secao7">Quero aprender tráfego de verdade</a>
+      </div>
+    </section>
+
+    <section id="secao4" class="alt fade-up">
+      <div class="section-header">
+        <h2>Esse curso é pra quem quer resultado, não teoria</h2>
+        <p>Se você se encaixa em algum desses perfis, essa imersão foi pensada para você — mesmo que nunca tenha anunciado antes.</p>
+      </div>
+      <div class="grid-two">
+        <div>
+          <ul>
+            <li>Quer fazer seu próprio tráfego sem depender de gestores.</li>
+            <li>É dono de negócio ou profissional liberal e quer aumentar as vendas.</li>
+            <li>Quer começar um negócio digital e vender online.</li>
+            <li>Já tentou aprender sozinho e se perdeu no meio das promessas.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p>A Click Digital mostra o caminho completo, com acompanhamento, prática e estratégia para você construir campanhas vencedoras do zero.</p>
+          <div class="cta-group">
+            <a class="cta" href="#secao7">Quero aprender com os melhores</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="secao5" class="fade-up">
+      <div class="section-header">
+        <h2>O que você só encontra nessa imersão</h2>
+        <p>Infraestrutura completa, suporte contínuo e uma comunidade que não te deixa cair na rotina.</p>
+      </div>
+      <div class="grid-three">
+        <div class="card">
+          <ul>
+            <li>Aulas 100% presenciais e aplicadas.</li>
+            <li>Execução prática durante as aulas.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li>Suporte direto via WhatsApp.</li>
+            <li>Grupo exclusivo de alunos.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li>Plataforma online para acompanhamento.</li>
+            <li>Coffee break e certificado inclusos.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="bullets">A maior assessoria de tráfego pago de Belém, com dezenas de alunos formados e resultados reais.</p>
+      <div class="cta-group">
+        <a class="cta" href="#secao7">Garantir minha vaga agora</a>
+      </div>
+    </section>
+
+    <section id="secao6" class="alt fade-up">
+      <div class="section-header">
+        <h2>Mais do que promessas, resultados</h2>
+        <p>Depoimentos de alunos que aplicaram o que aprenderam e começaram a lucrar ainda durante o curso.</p>
+      </div>
+      <div class="testimonial-gallery grid-cols-5 fade-up delay-1">
+        <figure class="hover-zoom" data-full="/img/depoimento1.jpg" tabindex="0">
+          <img src="/img/depoimento1.jpg" alt="Depoimento 1 - Aluno Click Digital" loading="lazy" />
+        </figure>
+        <figure class="hover-zoom" data-full="/img/depoimento2.jpg" tabindex="0">
+          <img src="/img/depoimento2.jpg" alt="Depoimento 2 - Aluno Click Digital" loading="lazy" />
+        </figure>
+        <figure class="hover-zoom" data-full="/img/depoimento3.jpg" tabindex="0">
+          <img src="/img/depoimento3.jpg" alt="Depoimento 3 - Aluno Click Digital" loading="lazy" />
+        </figure>
+        <figure class="hover-zoom" data-full="/img/depoimento4.jpg" tabindex="0">
+          <img src="/img/depoimento4.jpg" alt="Depoimento 4 - Aluno Click Digital" loading="lazy" />
+        </figure>
+        <figure class="hover-zoom" data-full="/img/depoimento5.jpg" tabindex="0">
+          <img src="/img/depoimento5.jpg" alt="Depoimento 5 - Aluno Click Digital" loading="lazy" />
+        </figure>
+      </div>
+      <div class="cta-group fade-up delay-2" style="margin-top: 40px;">
+        <a class="cta secondary" href="#secao6">Feedbacks</a>
+        <a class="cta" href="#secao7">Quero ter resultados assim</a>
+      </div>
+    </section>
+
+    <section id="turmas" class="fade-up">
+      <div class="section-header">
+        <h2>Turmas anteriores em ação</h2>
+        <p>Veja como foram as últimas edições da imersão Click Digital — prática, suporte de perto e campanhas no ar ainda durante o encontro.</p>
+      </div>
+      <div class="carousel fade-up delay-1">
+        <div class="carousel-track">
+          <div class="carousel-item">
+            <img src="/img/turma1.jpg" alt="Turma 01 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma2.jpg" alt="Turma 02 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma3.jpg" alt="Turma 03 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma4.jpg" alt="Turma 04 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma5.jpg" alt="Turma 05 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma1.jpg" alt="Turma 01 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma2.jpg" alt="Turma 02 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma3.jpg" alt="Turma 03 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma4.jpg" alt="Turma 04 Click Digital" loading="lazy" />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/turma5.jpg" alt="Turma 05 Click Digital" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="secao7" class="fade-up">
+      <div class="section-header">
+        <h2>As vagas são limitadas</h2>
+        <p>Uma imersão criada para gerar resultado real, com acompanhamento individual e execução na prática. Turmas enxutas para garantir atenção personalizada.</p>
+      </div>
+      <div class="pricing-table fade-up delay-1">
+        <div class="pricing-card highlight">
+          <h4>Lote 1</h4>
+          <strong>R$ 297</strong>
+          <span>Poucas vagas • Garanta agora</span>
+        </div>
+        <div class="pricing-card">
+          <h4>Lote 2</h4>
+          <strong>R$ 397</strong>
+          <span>Próximas vagas liberadas</span>
+        </div>
+        <div class="pricing-card">
+          <h4>Lote 3</h4>
+          <strong>R$ 497</strong>
+          <span>Valor integral da experiência</span>
+        </div>
+      </div>
+      <p style="margin-top: 32px; color: var(--muted);">Próxima turma: 13 de novembro • Parque Office, Augusto Montenegro.</p>
+      <div class="cta-group fade-up delay-2">
+        <a class="cta" href="#secao9">Garantir minha vaga</a>
+      </div>
+    </section>
+
+    <section id="secao8" class="alt fade-up">
+      <div class="section-header">
+        <h2>Você não aprende e fica sozinho</h2>
+        <p>Todo o suporte que você precisa para continuar crescendo depois da imersão.</p>
+      </div>
+      <div class="grid-two fade-up delay-1">
+        <div class="card">
+          <ul>
+            <li>Suporte via WhatsApp.</li>
+            <li>Grupo exclusivo de alunos.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li>Coffee break e networking.</li>
+            <li>Certificado de conclusão.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cta-group fade-up delay-2">
+        <a class="cta" href="#secao3">Quero aprender tráfego de verdade</a>
+      </div>
+    </section>
+
+    <section id="secao9" class="fade-up">
+      <div class="section-header">
+        <h2>Um dia que muda como você vende</h2>
+        <p>Você pode continuar tentando desvendar o tráfego sozinho ou aprender com quem vive disso todos os dias e já formou dezenas de profissionais em Belém.</p>
+        <p>13 de novembro • Parque Office, Augusto Montenegro.</p>
+      </div>
+      <div class="cta-group fade-up delay-1">
+        <a class="cta" href="#secao7">Quero garantir minha vaga agora</a>
+      </div>
+    </section>
+
+    <section id="local" class="alt fade-up">
+      <div class="section-header">
+        <h2>Onde acontece a imersão</h2>
+        <p>Um ambiente moderno e inspirador, com estrutura completa para você focar no que importa: aprender, executar e já sair com campanhas prontas para rodar.</p>
+      </div>
+      <div class="map-wrap fade-up delay-1">
+        <div class="map-copy">
+          <h3>Parque Office • Augusto Montenegro</h3>
+          <p>No coração de Belém, com fácil acesso, estacionamento e toda a infraestrutura para uma experiência presencial de alto nível.</p>
+          <p>Chegue com antecedência para o coffee break de boas-vindas, faça networking com outros profissionais e prepare-se para um dia de imersão verdadeira em tráfego pago.</p>
+          <div class="cta-group" style="margin-top: 16px;">
+            <a class="cta" href="#secao7">Garantir minha vaga</a>
+            <a class="cta secondary" href="https://maps.google.com/?q=Parque+Office+-+Augusto+Montenegro" target="_blank" rel="noopener">Ver rota no mapa</a>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.135038482933!2d-48.44842914170777!3d-1.3698956157114006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a461d7d7821b43%3A0xab7a4befd8a4c8b1!2sParque%20Office!5e1!3m2!1spt-BR!2sbr!4v1762731703848!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Click Digital © 2025 • Todos os direitos reservados • Belém - PA</p>
+    <p><a href="#secao1">Voltar ao topo</a></p>
+  </footer>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de depoimentos">
+    <button type="button" id="lightbox-close">Fechar</button>
+    <img src="" alt="Visualização ampliada" id="lightbox-image" />
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fadeEls = document.querySelectorAll(".fade-up");
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: "0px 0px -40px 0px",
+        }
+      );
+
+      fadeEls.forEach((el) => observer.observe(el));
+
+      const lightbox = document.querySelector(".lightbox");
+      const lightboxImg = document.getElementById("lightbox-image");
+      const lightboxClose = document.getElementById("lightbox-close");
+      const zoomables = document.querySelectorAll(".hover-zoom");
+
+      function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Depoimento Click Digital";
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+        document.body.style.overflow = "auto";
+      }
+
+      zoomables.forEach((item) => {
+        item.addEventListener("click", () => {
+          const fullSrc = item.dataset.full || item.querySelector("img").src;
+          const altText = item.querySelector("img").alt;
+          openLightbox(fullSrc, altText);
+        });
+
+        item.addEventListener("keypress", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            const fullSrc = item.dataset.full || item.querySelector("img").src;
+            const altText = item.querySelector("img").alt;
+            openLightbox(fullSrc, altText);
+          }
+        });
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      lightboxClose.addEventListener("click", closeLightbox);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && lightbox.classList.contains("open")) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
